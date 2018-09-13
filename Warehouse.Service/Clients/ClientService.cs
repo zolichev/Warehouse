@@ -10,7 +10,7 @@ namespace Warehouse.Service.Clients
 	/// <summary>
 	/// Client service.
 	/// </summary>
-	public class ClientService
+	public class ClientService : IClientService
 	{
 		private readonly IClientRepository _repo;
 

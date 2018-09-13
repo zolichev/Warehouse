@@ -13,9 +13,9 @@ namespace Warehouse.Service
 	/// </summary>
 	public class ServiceManager
 	{
-		private readonly Lazy<WareService> _wareService;
-		private readonly Lazy<ClientService> _clientService;
-		private readonly Lazy<NotificationService> _notiService;
+		private readonly Lazy<IWareService> _wareService;
+		private readonly Lazy<IClientService> _clientService;
+		private readonly Lazy<INotificationService> _notiService;
 
 		/// <summary>
 		/// Static instance of ServiceManager
@@ -35,24 +35,24 @@ namespace Warehouse.Service
 			if (clientRepository == null) throw new ArgumentNullException(nameof(clientRepository));
 			if (notificationRepository == null) throw new ArgumentNullException(nameof(notificationRepository));
 
-			_wareService = new Lazy<WareService>(() => new WareService(wareRepository, this));
-			_clientService = new Lazy<ClientService>(() => new ClientService(clientRepository, this));
-			_notiService = new Lazy<NotificationService>(() => new NotificationService(notificationRepository, this));
+			_wareService = new Lazy<IWareService>(() => new WareService(wareRepository, this));
+			_clientService = new Lazy<IClientService>(() => new ClientService(clientRepository, this));
+			_notiService = new Lazy<INotificationService>(() => new NotificationService(notificationRepository, this));
 		}
 
 		/// <summary>
 		/// Ware service
 		/// </summary>
-		public WareService WareService => _wareService.Value;
+		public IWareService WareService => _wareService.Value;
 
 		/// <summary>
 		/// Client service
 		/// </summary>
-		public ClientService ClientService => _clientService.Value;
+		public IClientService ClientService => _clientService.Value;
 
 		/// <summary>
 		/// Notification service
 		/// </summary>
-		public NotificationService NotificationService => _notiService.Value;
+		public INotificationService NotificationService => _notiService.Value;
 	}
 }

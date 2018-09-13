@@ -15,13 +15,13 @@ namespace Warehouse.Service.Wares
 		private readonly IWareRepository _repo;
 		private readonly Tracker _tracker = new Tracker();
 
-		public Keeper(IWareRepository repo, IEnumerable<Client> clients, NotificationService notificationService)
+		public Keeper(IWareRepository repo, IEnumerable<Client> clients, INotificationService notificationService)
 		{
 			_repo = repo;
 			SubscribeClients(clients, notificationService);
 		}
 
-		private void SubscribeClients(IEnumerable<Client> clients, NotificationService notificationService)
+		private void SubscribeClients(IEnumerable<Client> clients, INotificationService notificationService)
 		{
 			foreach (var client in clients)
 			{

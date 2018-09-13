@@ -14,7 +14,7 @@ namespace Warehouse.WebApi.Controllers
 	[BasicAuthentication]
 	public class WaresController : ApiController
 	{
-		private readonly WareService _service = ServiceManager.Current.WareService;
+		private readonly IWareService _service = ServiceManager.Current.WareService;
 
 		// GET: api/Wares
 		/// <summary>

@@ -11,7 +11,7 @@ namespace Warehouse.Service.Notifications
 	/// <summary>
 	/// Notification service.
 	/// </summary>
-	public class NotificationService
+	public class NotificationService : INotificationService
 	{
 		private readonly INotificationRepository _repo;
 		private readonly ServiceManager _serviceManager;

@@ -9,12 +9,12 @@ namespace Warehouse.Service.Wares
 	/// <inheritdoc cref="IObserver&lt;NotificationValue&gt;" />
 	internal sealed class ClientNotificator : IObserver<NotificationValue>, IDisposable
 	{
-		private readonly NotificationService _notificationService;
+		private readonly INotificationService _notificationService;
 		private readonly Client _client;
 		private IDisposable _unsubscriber;
 
 		/// <inheritdoc />
-		public ClientNotificator(Client client, NotificationService notificationService)
+		public ClientNotificator(Client client, INotificationService notificationService)
 		{
 			_client = client;
 			_notificationService = notificationService;

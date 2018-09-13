@@ -14,7 +14,7 @@ namespace Warehouse.WebApi.Controllers
 	/// </summary>
 	public class ClientsController : ApiController
 	{
-		private readonly ClientService _service = ServiceManager.Current.ClientService;
+		private readonly IClientService _service = ServiceManager.Current.ClientService;
 
 		/// <summary>
 		/// Get identity name from context

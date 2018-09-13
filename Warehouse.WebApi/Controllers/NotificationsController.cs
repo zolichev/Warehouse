@@ -15,7 +15,7 @@ namespace Warehouse.WebApi.Controllers
 	[BasicAuthentication]
 	public class NotificationsController : ApiController
 	{
-		private readonly NotificationService _service = ServiceManager.Current.NotificationService;
+		private readonly INotificationService _service = ServiceManager.Current.NotificationService;
 
 		/// <summary>
 		/// Get identity name from context

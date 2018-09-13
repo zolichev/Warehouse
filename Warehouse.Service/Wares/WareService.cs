@@ -10,7 +10,7 @@ namespace Warehouse.Service.Wares
 	/// <summary>
 	/// Represent storage of wares.
 	/// </summary>
-	public class WareService
+	public class WareService : IWareService
 	{
 		private readonly Keeper _keeper;
 
