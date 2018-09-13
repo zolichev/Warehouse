@@ -1,2 +1,2 @@
 # Warehouse
-Warehouse WebApi REST service
+Warehouse WebApi REST service.
