@@ -43,7 +43,7 @@ Application contains several layer implemented in different projects
 
 * Warehouse.Storage. Storing add data. Areas: Wares, Clients, Notifications. Used Entity Framework 6 Code First on localDB. Defined interfaces for ability replace store functionality.
 
-* Warehouse.Service. Main app functionality. Areas: Wares, Clients, Notifications. Ready for separate in microservices. Entry point is ServiceManager.
+* Warehouse.Service. Main app functionality. Areas: Wares, Clients, Notifications. Ready for separate in microservices. Entry point is ServiceLocator.
 
 * Warehouse.Service.Tests. Service layer unit tests. Implements self data storage in memory for clear and fill data in db before every test run.
 
@@ -55,7 +55,7 @@ Here is no good validation. Implement validation deeper.
 
 Storage must be in real DB.
 
-Install dependency injector for link controller and service instead of ServiceManager.
+Implement DI container.
 
 Basic authentification must be changed to token based authentification with support OAuth2.
 

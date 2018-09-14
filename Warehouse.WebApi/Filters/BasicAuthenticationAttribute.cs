@@ -29,7 +29,7 @@ namespace Warehouse.WebApi.Filters
 				var roles = new[] {"client"};
 				var login = authData[0];
 				var password = authData[1];
-				if (ServiceManager.Current.ClientService.CheckAutentification(login, password))
+				if (Dependency.ServiceLocator.ClientService.CheckAutentification(login, password))
 					context.Principal = new GenericPrincipal(new GenericIdentity(login), roles);
 			}
 

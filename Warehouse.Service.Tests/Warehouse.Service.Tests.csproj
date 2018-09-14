@@ -64,8 +64,8 @@
     <Compile Include="MemoryStorage\WareRepositoryTest.cs" />
     <Compile Include="Notifications\NotificationServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServiceManagerTests.cs" />
-    <Compile Include="TestConfig.cs" />
+    <Compile Include="ServiceLocatorTests.cs" />
+    <Compile Include="Test.cs" />
     <Compile Include="Wares\WareServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>

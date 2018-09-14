@@ -22,26 +22,26 @@ namespace Warehouse.Service.Tests.Notifications
 		public void NotificationServiceTest()
 		{
 			//Prepare
-			TestConfig.Register();
+			Test.Config();
 
 			//Action
 
 			//Confirm
-			Assert.IsNotNull(ServiceManager.Current.NotificationService);
+			Assert.IsNotNull(Test.ServiceLocator.NotificationService);
 		}
 
 		[TestMethod()]
 		public void ExistTest()
 		{
 			//Prepare
-			TestConfig.Register();
+			Test.Config();
 
 			//Action
-			var value1 = ServiceManager.Current.NotificationService.Exist(
+			var value1 = Test.ServiceLocator.NotificationService.Exist(
 				new NotificationTest(1, 1, 1, new Dictionary<string, string>(), DateTime.Now, NotificationType.WareExpired));
-			var value2 = ServiceManager.Current.NotificationService.Exist(
+			var value2 = Test.ServiceLocator.NotificationService.Exist(
 				new NotificationTest(10, 1, 1, new Dictionary<string, string>(), DateTime.Now, NotificationType.WareExpired));
-			var value3 = ServiceManager.Current.NotificationService.Exist(
+			var value3 = Test.ServiceLocator.NotificationService.Exist(
 				new NotificationTest(10, 10, 10, new Dictionary<string, string>(), DateTime.Now, NotificationType.WareExpired));
 
 			//Confirm
@@ -57,11 +57,11 @@ namespace Warehouse.Service.Tests.Notifications
 		public void GetNotificationsTest()
 		{
 			//Prepare
-			TestConfig.Register();
+			Test.Config();
 
 			//Action
-			var value1 = ServiceManager.Current.NotificationService.GetNotifications("test");
-			var value2 = ServiceManager.Current.NotificationService.GetNotifications("test_not_exist");
+			var value1 = Test.ServiceLocator.NotificationService.GetNotifications("test");
+			var value2 = Test.ServiceLocator.NotificationService.GetNotifications("test_not_exist");
 
 			//Confirm
 			Assert.IsNotNull(value1);
@@ -73,10 +73,10 @@ namespace Warehouse.Service.Tests.Notifications
 		public void GetNotificationTest()
 		{
 			//Prepare
-			TestConfig.Register();
+			Test.Config();
 
 			//Action
-			var value = ServiceManager.Current.NotificationService.GetNotification("test", 1);
+			var value = Test.ServiceLocator.NotificationService.GetNotification("test", 1);
 
 			//Confirm
 			Assert.IsNotNull(value);
@@ -90,15 +90,15 @@ namespace Warehouse.Service.Tests.Notifications
 		public void AddTest()
 		{
 			//Prepare
-			TestConfig.Register();
+			Test.Config();
 
 			//Action
 			var valueBefore = new NotificationTest(3, 1, 1, new Dictionary<string, string>(), DateTime.Now,
 				NotificationType.WareTaked);
-			var countBefore = ServiceManager.Current.NotificationService.GetNotifications("test").Count();
-			ServiceManager.Current.NotificationService.Add(valueBefore);
-			var valueAfter = ServiceManager.Current.NotificationService.GetNotifications("test").LastOrDefault();
-			var countAfter = ServiceManager.Current.NotificationService.GetNotifications("test").Count();
+			var countBefore = Test.ServiceLocator.NotificationService.GetNotifications("test").Count();
+			Test.ServiceLocator.NotificationService.Add(valueBefore);
+			var valueAfter = Test.ServiceLocator.NotificationService.GetNotifications("test").LastOrDefault();
+			var countAfter = Test.ServiceLocator.NotificationService.GetNotifications("test").Count();
 
 			//Confirm
 			Assert.IsNotNull(valueAfter);
@@ -113,12 +113,12 @@ namespace Warehouse.Service.Tests.Notifications
 		public void ViewNotificationTest()
 		{
 			//Prepare
-			TestConfig.Register();
+			Test.Config();
 
 			//Action
-			var countBefore = ServiceManager.Current.NotificationService.GetNotifications("test").Count();
-			var value = ServiceManager.Current.NotificationService.ViewNotification("test", 1);
-			var countAfter = ServiceManager.Current.NotificationService.GetNotifications("test").Count();
+			var countBefore = Test.ServiceLocator.NotificationService.GetNotifications("test").Count();
+			var value = Test.ServiceLocator.NotificationService.ViewNotification("test", 1);
+			var countAfter = Test.ServiceLocator.NotificationService.GetNotifications("test").Count();
 
 			//Confirm
 			Assert.IsNotNull(value);
@@ -134,13 +134,13 @@ namespace Warehouse.Service.Tests.Notifications
 		public void ViewNextNotificationTest()
 		{
 			//Prepare
-			TestConfig.Register();
+			Test.Config();
 
 			//Action
-			var countBefore = ServiceManager.Current.NotificationService.GetNotifications("test").Count();
-			ServiceManager.Current.NotificationService.ViewNextNotification("test");
-			var value = ServiceManager.Current.NotificationService.ViewNextNotification("test");
-			var countAfter = ServiceManager.Current.NotificationService.GetNotifications("test").Count();
+			var countBefore = Test.ServiceLocator.NotificationService.GetNotifications("test").Count();
+			Test.ServiceLocator.NotificationService.ViewNextNotification("test");
+			var value = Test.ServiceLocator.NotificationService.ViewNextNotification("test");
+			var countAfter = Test.ServiceLocator.NotificationService.GetNotifications("test").Count();
 
 			//Confirm
 			Assert.IsNotNull(value);
@@ -156,11 +156,11 @@ namespace Warehouse.Service.Tests.Notifications
 		public void ViewAllNotificationsTest()
 		{
 			//Prepare
-			TestConfig.Register();
+			Test.Config();
 
 			//Action
-			var value1 = ServiceManager.Current.NotificationService.ViewAllNotifications("test");
-			var value2 = ServiceManager.Current.NotificationService.ViewAllNotifications("test");
+			var value1 = Test.ServiceLocator.NotificationService.ViewAllNotifications("test");
+			var value2 = Test.ServiceLocator.NotificationService.ViewAllNotifications("test");
 
 			//Confirm
 			Assert.IsNotNull(value1);

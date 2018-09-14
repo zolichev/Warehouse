@@ -12,7 +12,7 @@ namespace Warehouse.WebApi
 		protected void Application_Start()
 		{
 			DbInitializer.Initialize();
-			DependencyConfig.Register();
+			Dependency.Config();
 			GlobalConfiguration.Configure(WebApiConfig.Register);
 		}
 	}

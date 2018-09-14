@@ -16,35 +16,35 @@ namespace Warehouse.Service.Tests.Clients
 		public void ClientServiceTest()
 		{
 			//Prepare
-			TestConfig.Register();
+			Test.Config();
 
 			//Action
 
 			//Confirm
-			Assert.IsNotNull(ServiceManager.Current.ClientService);
+			Assert.IsNotNull(Test.ServiceLocator.ClientService);
 		}
 
 		[TestMethod()]
 		public void GetNotifiableClientsTest()
 		{
 			//Prepare
-			TestConfig.Register();
+			Test.Config();
 
 			//Action
 
 			//Confirm
-			Assert.IsNotNull(ServiceManager.Current.ClientService.GetNotifiableClients());
-			Assert.IsTrue(ServiceManager.Current.ClientService.GetNotifiableClients().Any());
+			Assert.IsNotNull(Test.ServiceLocator.ClientService.GetNotifiableClients());
+			Assert.IsTrue(Test.ServiceLocator.ClientService.GetNotifiableClients().Any());
 		}
 
 		[TestMethod()]
 		public void CheckAutentificationTest()
 		{
 			//Prepare
-			TestConfig.Register();
+			Test.Config();
 
 			//Action
-			var value = ServiceManager.Current.ClientService.CheckAutentification("test", "");
+			var value = Test.ServiceLocator.ClientService.CheckAutentification("test", "");
 
 			//Confirm
 			Assert.IsNotNull(value);
@@ -55,10 +55,10 @@ namespace Warehouse.Service.Tests.Clients
 		public void RegisterTest()
 		{
 			//Prepare
-			TestConfig.Register();
+			Test.Config();
 
 			//Action
-			var value = ServiceManager.Current.ClientService.Register(new ClientValue()
+			var value = Test.ServiceLocator.ClientService.Register(new ClientValue()
 			{
 				Login = "u1",
 				Password = "u1",
@@ -76,10 +76,10 @@ namespace Warehouse.Service.Tests.Clients
 		public void GetClientTest()
 		{
 			//Prepare
-			TestConfig.Register();
+			Test.Config();
 
 			//Action
-			var value = ServiceManager.Current.ClientService.GetClient(1);
+			var value = Test.ServiceLocator.ClientService.GetClient(1);
 
 			//Confirm
 			Assert.IsNotNull(value);
@@ -92,10 +92,10 @@ namespace Warehouse.Service.Tests.Clients
 		public void GetClientTest1()
 		{
 			//Prepare
-			TestConfig.Register();
+			Test.Config();
 
 			//Action
-			var value = ServiceManager.Current.ClientService.GetClient("test");
+			var value = Test.ServiceLocator.ClientService.GetClient("test");
 
 			//Confirm
 			Assert.IsNotNull(value);
@@ -108,10 +108,10 @@ namespace Warehouse.Service.Tests.Clients
 		public void UpdateClientNotifiableTest()
 		{
 			//Prepare
-			TestConfig.Register();
+			Test.Config();
 
 			//Action
-			var value = ServiceManager.Current.ClientService.UpdateClientNotifiable("test", false);
+			var value = Test.ServiceLocator.ClientService.UpdateClientNotifiable("test", false);
 
 			//Confirm
 			Assert.IsNotNull(value);

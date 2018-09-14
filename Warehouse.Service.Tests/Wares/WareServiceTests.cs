@@ -25,35 +25,35 @@ namespace Warehouse.Service.Tests.Wares
 		public void WareServiceTest()
 		{
 			//Prepare
-			TestConfig.Register();
+			Test.Config();
 
 			//Action
 
 			//Confirm
-			Assert.IsNotNull(ServiceManager.Current.WareService);
+			Assert.IsNotNull(Test.ServiceLocator.WareService);
 		}
 
 		[TestMethod()]
 		public void GetWaresTest()
 		{
 			//Prepare
-			TestConfig.Register();
+			Test.Config();
 
 			//Action
 
 			//Confirm
-			Assert.IsNotNull(ServiceManager.Current.WareService.GetWares());
-			Assert.IsTrue(ServiceManager.Current.WareService.GetWares().Any());
+			Assert.IsNotNull(Test.ServiceLocator.WareService.GetWares());
+			Assert.IsTrue(Test.ServiceLocator.WareService.GetWares().Any());
 		}
 
 		[TestMethod()]
 		public void GetWareTest()
 		{
 			//Prepare
-			TestConfig.Register();
+			Test.Config();
 
 			//Action
-			var value = ServiceManager.Current.WareService.GetWare(1);
+			var value = Test.ServiceLocator.WareService.GetWare(1);
 
 			//Confirm
 			Assert.IsNotNull(value);
@@ -67,14 +67,14 @@ namespace Warehouse.Service.Tests.Wares
 		public void StoreTest()
 		{
 			//Prepare
-			TestConfig.Register();
+			Test.Config();
 
 			//Action
 			var valueBefore = new Ware("Carrot", WareType.Vegetables, DateTime.Today.AddMonths(6));
-			var countBefore = ServiceManager.Current.WareService.GetWares().Count();
-			ServiceManager.Current.WareService.Store(valueBefore);
-			var valueAfter = ServiceManager.Current.WareService.GetWares().LastOrDefault();
-			var countAfter = ServiceManager.Current.WareService.GetWares().Count();
+			var countBefore = Test.ServiceLocator.WareService.GetWares().Count();
+			Test.ServiceLocator.WareService.Store(valueBefore);
+			var valueAfter = Test.ServiceLocator.WareService.GetWares().LastOrDefault();
+			var countAfter = Test.ServiceLocator.WareService.GetWares().Count();
 
 			//Confirm
 			Assert.IsNotNull(valueAfter);
@@ -88,12 +88,12 @@ namespace Warehouse.Service.Tests.Wares
 		public void TakeTest()
 		{
 			//Prepare
-			TestConfig.Register();
+			Test.Config();
 
 			//Action
-			var countBefore = ServiceManager.Current.WareService.GetWares().Count();
-			var value = ServiceManager.Current.WareService.Take(5);
-			var countAfter = ServiceManager.Current.WareService.GetWares().Count();
+			var countBefore = Test.ServiceLocator.WareService.GetWares().Count();
+			var value = Test.ServiceLocator.WareService.Take(5);
+			var countAfter = Test.ServiceLocator.WareService.GetWares().Count();
 
 			//Confirm
 			Assert.IsNotNull(value);
@@ -108,12 +108,12 @@ namespace Warehouse.Service.Tests.Wares
 		public void TakeTest1()
 		{
 			//Prepare
-			TestConfig.Register();
+			Test.Config();
 
 			//Action
-			var countBefore = ServiceManager.Current.WareService.GetWares().Count();
-			var value = ServiceManager.Current.WareService.Take("Tuna");
-			var countAfter = ServiceManager.Current.WareService.GetWares().Count();
+			var countBefore = Test.ServiceLocator.WareService.GetWares().Count();
+			var value = Test.ServiceLocator.WareService.Take("Tuna");
+			var countAfter = Test.ServiceLocator.WareService.GetWares().Count();
 
 			//Confirm
 			Assert.IsNotNull(value);

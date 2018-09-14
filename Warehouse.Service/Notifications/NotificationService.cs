@@ -14,13 +14,13 @@ namespace Warehouse.Service.Notifications
 	public class NotificationService : INotificationService
 	{
 		private readonly INotificationRepository _repo;
-		private readonly ServiceManager _serviceManager;
+		private readonly IServiceLocator _serviceLocator;
 
 		/// <inheritdoc />
-		public NotificationService(INotificationRepository repo, ServiceManager serviceManager)
+		public NotificationService(INotificationRepository repo, IServiceLocator serviceLocator)
 		{
 			_repo = repo;
-			_serviceManager = serviceManager;
+			_serviceLocator = serviceLocator;
 		}
 
 		/// <summary>
@@ -43,7 +43,7 @@ namespace Warehouse.Service.Notifications
 		/// <returns>All client notifications or null if client not found</returns>
 		public IEnumerable<Notification> GetNotifications(string clientName)
 		{
-			var client = _serviceManager.ClientService.GetClient(clientName);
+			var client = _serviceLocator.ClientService.GetClient(clientName);
 			if (client == null) return null;
 			return _repo.Notifications.Where(i => i.ClientId == client.Id);
 		}
@@ -56,7 +56,7 @@ namespace Warehouse.Service.Notifications
 		/// <returns>Client notification or null if client or notification not found</returns>
 		public Notification GetNotification(string clientName, int id)
 		{
-			var client = _serviceManager.ClientService.GetClient(clientName);
+			var client = _serviceLocator.ClientService.GetClient(clientName);
 			if (client == null) return null;
 			return _repo.Notifications.FirstOrDefault(i => i.Id == id && i.ClientId == client.Id);
 		}
@@ -79,7 +79,7 @@ namespace Warehouse.Service.Notifications
 		/// <returns>Founded and made viewed notification or null if client or notification not found</returns>
 		public Notification ViewNotification(string clientName, int id)
 		{
-			var client = _serviceManager.ClientService.GetClient(clientName);
+			var client = _serviceLocator.ClientService.GetClient(clientName);
 			var notification = _repo.Notifications.Where(i => !i.Viewed).FirstOrDefault(i => i.Id == id);
 			if (notification != null) notification.Viewed = true;
 			return notification;
@@ -92,7 +92,7 @@ namespace Warehouse.Service.Notifications
 		/// <returns>Founded and made viewed notification or null if client or notification not found</returns>
 		public Notification ViewNextNotification(string clientName)
 		{
-			var client = _serviceManager.ClientService.GetClient(clientName);
+			var client = _serviceLocator.ClientService.GetClient(clientName);
 			var notification = _repo.Notifications.FirstOrDefault(i => !i.Viewed && i.ClientId == client.Id);
 			if (notification != null)
 			{
@@ -110,7 +110,7 @@ namespace Warehouse.Service.Notifications
 		/// <returns>Founded and made viewed notifications or null if client not found</returns>
 		public IEnumerable<Notification> ViewAllNotifications(string clientName)
 		{
-			var client = _serviceManager.ClientService.GetClient(clientName);
+			var client = _serviceLocator.ClientService.GetClient(clientName);
 			if (client == null) return null;
 			var notifications = _repo.Notifications.Where(i => !i.Viewed && i.ClientId == client.Id).ToList();
 			notifications.ForEach(n => n.Viewed = true);

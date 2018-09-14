@@ -15,7 +15,7 @@ namespace Warehouse.Service.Wares
 		private readonly Keeper _keeper;
 
 		/// <inheritdoc />
-		public WareService(IWareRepository repo, ServiceManager serviceFactory)
+		public WareService(IWareRepository repo, IServiceLocator serviceFactory)
 		{
 			_keeper = new Keeper(repo, serviceFactory.ClientService.GetNotifiableClients(),
 				serviceFactory.NotificationService);

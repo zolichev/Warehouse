@@ -15,7 +15,7 @@ namespace Warehouse.Service.Clients
 		private readonly IClientRepository _repo;
 
 		/// <inheritdoc />
-		public ClientService(IClientRepository repo, ServiceManager serviceManager)
+		public ClientService(IClientRepository repo, IServiceLocator serviceLocator)
 		{
 			_repo = repo;
 		}

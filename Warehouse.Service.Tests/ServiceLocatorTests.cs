@@ -10,19 +10,18 @@ using Warehouse.Service.Tests.MemoryStorage;
 namespace Warehouse.Service.Tests
 {
 	[TestClass()]
-	public class ServiceManagerTests
+	public class ServiceLocatorTests
 	{
 		[TestMethod()]
 		public void ServiceManagerTest()
 		{
 			//Prepare
-			ServiceManager serviceManager = new ServiceManager(new WareRepositoryTest(), new ClientRepositoryTest(), new NotificationRepositoryTest());
+			Test.Config();
 
 			//Action
-			ServiceManager.Current = serviceManager;
 
 			//Confirm
-			Assert.IsNotNull(ServiceManager.Current);
+			Assert.IsNotNull(Test.ServiceLocator);
 		}
 	}
 }
