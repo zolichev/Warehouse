@@ -15,6 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse.Service.Tests", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{42F21E5B-61EC-4B9C-9C6C-B8613F12FBCA}"
 	ProjectSection(SolutionItems) = preProject
+		docs\feedback.txt = docs\feedback.txt
 		docs\inventory_system_trial.md = docs\inventory_system_trial.md
 		README.md = README.md
 		README_RUS.md = README_RUS.md
