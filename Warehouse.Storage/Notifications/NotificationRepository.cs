@@ -74,7 +74,5 @@ namespace Warehouse.Storage.Notifications
 			if (needSave) _db.SaveChanges();
 			return list.AsQueryable();
 		}
-
-		private bool Exists(int id) => _db.Notifications.Count(e => e.Id == id) > 0;
 	}
 }

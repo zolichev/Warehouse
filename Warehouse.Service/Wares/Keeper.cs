@@ -60,7 +60,7 @@ namespace Warehouse.Service.Wares
 		{
 			var entity = new Ware(ware);
 			entity = _repo.Add(entity);
-			NotifyStored(entity);
+			WareStored(entity);
 			CheckExpires();
 			return entity;
 		}
@@ -74,16 +74,16 @@ namespace Warehouse.Service.Wares
 		{
 			CheckExpires();
 			var entity = _repo.Remove(ware);
-			NotifyTaked(ware);
+			WareTaked(ware);
 			return entity;
 		}
 
-		private void CheckExpires() => _repo.Wares.Where(i => i.ExpirationDate < DateTime.Now).ToList().ForEach(NotifyExpired);
+		private void CheckExpires() => _repo.Wares.Where(i => i.ExpirationDate < DateTime.Now).ToList().ForEach(WareExpired);
 
-		private void NotifyExpired(Ware ware) => _tracker.WareExpired(ware);
+		private void WareExpired(Ware ware) => _tracker.WareExpired(ware);
 
-		private void NotifyStored(Ware ware) => _tracker.WareStored(ware);
+		private void WareStored(Ware ware) => _tracker.WareStored(ware);
 
-		private void NotifyTaked(Ware ware) => _tracker.WareTaked(ware);
+		private void WareTaked(Ware ware) => _tracker.WareTaked(ware);
 	}
 }

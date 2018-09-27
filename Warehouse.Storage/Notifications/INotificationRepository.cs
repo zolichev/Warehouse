@@ -36,7 +36,6 @@ namespace Warehouse.Storage.Notifications
 		/// <returns>Updated notification</returns>
 		Notification Update(Notification notification);
 
-
 		/// <summary>
 		/// Update notifications in repository.
 		/// </summary>
